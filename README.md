@@ -1,2 +1,41 @@
-# Qustion2
-write a c++ program that will carry out the following: 1.Define a class named Movie that had data members:title,director,duration,and rating. Define a constructor to initialize the data memebers of the Movie class. 2.Define a member function named display that prints the details of thd movie 3.Define a member function named rateM
+#include <iostream>
+#include <string>
+
+class Movie {
+private:
+    std::string title;
+    std::string director;
+    int duration; // in minutes
+    float rating;
+
+public:
+    Movie(std::string t, std::string d, int dur, float r) 
+        : title(t), director(d), duration(dur), rating(r) {}
+
+    void display() {
+        std::cout << "Title: " << title << std::endl;
+        std::cout << "Director: " << director << std::endl;
+        std::cout << "Duration: " << duration << " minutes" << std::endl;
+        std::cout << "Rating: " << rating << std::endl;
+    }
+
+    void rateMovie(float newRating) {
+        if (newRating >= 1.0 && newRating <= 5.0) {
+            rating = newRating;
+        } else {
+            std::cout << "Invalid rating" << std::endl;
+        }
+    }
+};
+
+int main() {
+    Movie movie("Inception", "Christopher Nolan", 148, 4.8);
+    movie.display();
+
+    movie.rateMovie(5.0);
+    movie.display();
+
+    movie.rateMovie(6.0);
+
+    return 0;
+}
